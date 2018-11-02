@@ -1,0 +1,27 @@
+// This file and it's location defines a JavaScript project root directory. 
+// The presence of this file in a directory indicates that 
+// the directory is the root of a JavaScript project. The file 
+// itself can optionally list the files belonging to the 
+// project, the files to be excluded from the project, as well 
+// as compiler options
+// 
+// Official documentation https://code.visualstudio.com/docs/languages/jsconfig
+{
+    "compilerOptions": {
+        "target": "ES5", // Helps to warn us about using other versions of ECMA Script
+        "checkJs": true, // Helps to provide type checking
+    },
+    // White list of folders or files that should be considered as part of the project.
+    // Change/Add/Remove any folders that do not reflect your projects folder structure.
+    // The pattern ** says all files and sub-directories.
+    // Example: flc/**/* says any file in any folder inside the directory flc.
+    "include": [
+        "scripts/**/*",
+        "flc objects/**/*",
+        "examples.js"
+    ],
+    // Blacklist of folders or files that should not be considered as part of the project.
+    "exclude": [
+        "*/excludedItem.js"
+    ]
+}

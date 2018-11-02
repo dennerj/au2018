@@ -1,0 +1,24 @@
+{
+    "parser": "babel-eslint",
+    "extends": "airbnb-base/legacy",
+    "globals": {
+        "item": true,
+        "Security": true,
+        "userID": true,
+        "customTransID": true,
+        "returnValue": true,
+        "println": true,
+        "Logger": true,
+        "Email": true,
+        "getPrintView": true,
+        "createItem": true,
+        "loadItem": true,
+        "dmsID": true,
+        "workspaceID": true
+    },
+    "rules": {
+        "eol-last":"off",
+        "linebreak-style": "off",
+        "max-len": "off"
+    }
+}
