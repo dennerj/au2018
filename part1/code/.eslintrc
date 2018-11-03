@@ -19,6 +19,7 @@
     "rules": {
         "eol-last":"off",
         "linebreak-style": "off",
-        "max-len": "off"
+        "max-len": "off",
+        "indent": ["error", 4]
     }
 }
