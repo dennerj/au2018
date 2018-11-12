@@ -17,9 +17,13 @@
         "workspaceID": true
     },
     "rules": {
+        "comma-dangle": ["error", "always"],
         "eol-last":"off",
+        "indent": ["error", 4, { "SwitchCase": 1 }],
         "linebreak-style": "off",
         "max-len": "off",
-        "indent": ["error", 4]
+        "no-param-reassign": "off",
+        "no-plusplus": "off",
+        "vars-on-top": "off"
     }
 }
