@@ -9,7 +9,7 @@
 {
     "compilerOptions": {
         "target": "ES5", // Helps to warn us about using other versions of ECMA Script
-        "checkJs": true, // Helps to provide type checking
+        // "checkJs": true, // Helps to provide type checking
     },
     // White list of folders or files that should be considered as part of the project.
     // Change/Add/Remove any folders that do not reflect your projects folder structure.
