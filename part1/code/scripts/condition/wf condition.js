@@ -1,60 +1,27 @@
-function returnValue(msgs) {
-    if (typeof msgs === 'undefined') {
-        console.log('returnValue argument is undefined!');
-    } else if (typeof msgs === 'boolean') {
-        console.log(msgs);
-    } else if (!Array.isArray(msgs)) {
-        console.log('returnValue argument is not an Array!');
-    } else if (Array.isArray(msgs)) {
-        if (msgs.length > 0) {
-            msgs.forEach(element => { console.log(element); });
-        } else {
-            console.log('Passed all validations');
-        }
-    }
-}
-
-var Security = {
-    inGroup: function (userID, groupName) {
-        return testUsers[userID].groups.indexOf(groupName) >= 0;
-    },
-    inRole: function (userID, roleName) {
-        return testUsers[userID].roles.indexOf(roleName) >= 0;
-    },
-};
-
-var testUsers = {
-    goat: {
-        groups: ['Admin', 'Engineer', 'Drafter'],
-        roles: ['ER', 'IR', 'QC']
-    },
-};
-
-var customTransID = 'SEND_FOR_APPROVAL';
 var conditionValue = false;
 
 switch (customTransID) {
-    case 'BEGIN':
+    case 'SIGN_OFF_ENG':
+        conditionValue = (!item.ENG_REVIEW_DATE && userID === item.ENG_REVIEW_NAME.USER_ID);
         break;
-    case 'SEND_FOR_APPROVAL':
-        conditionValue = Security.inGroup('goat', 'LAKERS');
+    case 'SIGN_OFF_PRODUCTION':
+        conditionValue = (!item.MFG_REVIEW_DATE && userID === item.MFG_REVIEW_NAME.USER_ID);
         break;
-    case 'APPROVE_REPAIR':
+    case 'SIGN_OFF_PLANT_MANAGER':
+        conditionValue = (!item.PLANT_REVIEW_DATE && userID === item.PLANT_REVIEW_NAME.USER_ID);
         break;
-    case 'REJECT_REPAIR':
+    case 'TO_FOLLOW_UP':
+        conditionValue = (
+            (!!item.MFG_REVIEW_DATE || item.MFG_REVIEW_NAME.FULL_NAME === 'N/A') &&
+            (!!item.PLANT_REVIEW_DATE || item.PLANT_REVIEW_NAME.FULL_NAME === 'N/A') &&
+            (!!item.ENG_REVIEW_DATE || item.ENG_REVIEW_NAME.FULL_NAME === 'N/A')
+        );
         break;
-    case 'CONPLETE':
-        break;
-    case 'COMMENT':
-        break;
-    case 'CANCEL':
-        break;
-    case 'DEVRESET':
+    case 'CLOSE_FROM_ACTIVE':
+        conditionValue = (item.CLOSE_FROM_ACTIVE === 'Yes');
         break;
     default:
-
         break;
 }
 
 returnValue(conditionValue);
-
