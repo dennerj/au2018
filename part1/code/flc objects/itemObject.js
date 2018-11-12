@@ -1,18 +1,21 @@
-/* eslint-disable no-unused-vars no-new-wrappers */
+/* eslint-disable no-unused-vars, no-new-wrappers */
+
 /**
  * ### item
  */
 var item = {
-    addMileStone: function () { },
-    deleteItem: function () { },
-    performWorkflowTransition: function (transID, comment: string) { },
+    addMileStone: function addMileStone() { },
+    deleteItem: function deleteItem() { },
+    performWorkflowTransition: function performWorkflowTransition(transID, comment) { },
     /**
      * item.performWorkflowTransitionByCustomID('CUSTOM_ID', 'COMMENTS')
      * - Performs a workflow transition by its Custom ID as specified by 'CUSTOM_ID'.
      * - The 'COMMENTS' parameter is optional. If comments are specified, they are saved with the workflow step
      * in the Workflow Actions tab..
+     * @param {string} customID
+     * @param {string} [comments]
      */
-    performWorkflowTransitionByCustomID: function (customID: string, comments: string) { },
+    performWorkflowTransitionByCustomID: function performWorkflowTransitionByCustomID(customID, comments) { },
     /**
      * Descriptor properties on the item object (item.descriptor) represent item metadata.
      */
@@ -23,7 +26,7 @@ var item = {
          */
         createdDate: new Date(),
         deleted: new Boolean(),
-        descriptor: new Number(),
+        descriptor: new String(),
         lastModifiedOn: new Date(),
         ownerID: new String(),
         /**
@@ -42,20 +45,26 @@ var item = {
      * variables declared in the script, including ones used to add other new rows. You can use this capability to add
      * multiple rows in a single script through cloning. You do not need to assign values to all fields in a row, only
      * to fields you want to populate.
+     * @param {string} PHASE
+     * @param {string} STATUS
+     * @param {date} TASK_START
+     * @param {date} TASK_END
+     * @param {string} ASSIGNED_DEPARTMENT
+     * @param {string} DETAILS
      */
     grid: {
-        addRows: function (PHASE: string, STATUS: string, TASK_START: Date, TASK_END: Date, ASSIGNED_DEPARTMENT: string, ASSIGNED_USER: string, DETAILS: string) { },
+        addRows: function addRows(PHASE, STATUS, TASK_START, TASK_END, ASSIGNED_DEPARTMENT, ASSIGNED_USER, DETAILS) { },
         /**
          * ### `item.grid.clear()`
          * Empties the Grid array (removes all rows from the Grid tab)
          */
-        clear: function () { },
+        clear: function clear() { },
         /**
          * ### !! Requires array item
          * ### `item.grid[i].remove()`
          * Removes the specified row in the array from the Grid tab
          */
-        remove: function () { },
+        remove: function remove() { },
     },
     /**
      * ### item.project
@@ -69,11 +78,11 @@ var item = {
          * item.project.addTask('title', start_date, end_date, 'progress');
          * item.project.addTask(target, start_date, end_date, 'progress');
          */
-        addTask: function () { },
+        addTask: function addTask() { },
         /**
          * Empties the tasks array (removes all tasks from the Project Management tab)
          */
-        clear: function () { },
+        clear: function clear() { },
         /**
          * ### item.project.children[i] (JavaScript array)
          * Array of children of the specified task in the array (sub-tasks); only on tasks linked to
@@ -84,11 +93,11 @@ var item = {
             /**
              * Percentage completed to date of the specified task in the array (% Complete on the Project Management tab)
              */
-            progress: function (progress: string) { },
+            progress: function progress(progress) { },
             /**
              * Removes the specified task in the array from the Project Management tab
              */
-            remove: function () { },
+            remove: function remove() { },
             /**
              * ### item.project.children[i].status (string)
              * Status of the specified task in the array (Status on the Project Management tab)
@@ -116,7 +125,8 @@ var item = {
             target_id: 123456,
             title: '',
             type: '',
-        }],
+        },
+        ],
     },
     /**
      * ### item.relationships
@@ -128,7 +138,7 @@ var item = {
          * // Example
          * var workFlowItem = item.workflowItems.addItem({RELATED:targetItem, [...etc...] });
          */
-        addRelated: function () { },
+        addRelated: function addRelated() { },
     },
     /**
      * ### item Workflow Actions array
@@ -182,14 +192,14 @@ var item = {
          * // Example
          * var workFlowItem = item.workflowItems.addItem({RELATED:targetItem, [...etc...] });
          */
-        addItem: function () { },
+        addItem: function addItem() { },
         /**
          * ### clear()
          * Empties the workflow items array (removes all workflow items from the **Workflow Items** tab)
          * @example
          * item.workflowItems.clear();
          */
-        clear: function () { },
+        clear: function clear() { },
         /**
          * ### !! Requires array item
          * ### .remove()
@@ -197,8 +207,8 @@ var item = {
          * @example
          * item.workflowItems[i].remove();
          */
-        remove: function () { },
-        item: { ENTER_CUSTOM_FIELD_ID_HERE: '' },
+        remove: function remove() { },
+        item: { ENTER_CUSTOM_FIELD_ID_HERE: '', },
         descriptor: '',
         id: 1234,
         lifecycle: '',
@@ -210,7 +220,7 @@ var item = {
          * as its value the item's milestones[i].workflowState.workflowStateName property.
          * @param {string} wfStateName
          */
-        setWorkflowState: function (wfStateName) { },
+        setWorkflowState: function setWorkflowState(wfStateName) { },
         milestoneDate: '',
         milestoneType: '',
         progress: 123,
@@ -218,5 +228,6 @@ var item = {
         worflowState: '',
         worflowStateName: '',
         worflowStateID: 123456,
-    }],
+    },
+    ],
 };
