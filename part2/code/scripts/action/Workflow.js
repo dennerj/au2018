@@ -16,13 +16,13 @@
  */
 // eslint-disable-next-line no-unused-vars
 function parseCustomTransID(transID) {
-    var parsedID = transID;
+    parsedID = transID;
     if (/^((COMMENT_)|(CANCEL_))(\w*)$/.test(parsedID)) {
     // if (/^((COMMENT_)|(CANCEL_)|(DEVRESET_))(\w*)$/.test(parsedID)) {
         // On match split string, slice result to first element, return string (simple trans name).
         parsedID = parsedID.split('_').slice(0, 1).toString();
     } else {
-        parsedID = transID;
+        parsedID = transID
     }
     return parsedID;
 }
